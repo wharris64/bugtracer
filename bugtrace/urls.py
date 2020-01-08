@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bugtrace import views
+from bugtrace import models
+# from bugtrace.views import 
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
+    path('detail/<int:id>/', views.detail),
+    path('ticketadd/', views.ticketadd),
+    path('login/', views.login_view),
+    path('invalid/<int:id>/', views.invalid),
+    path('inprogress/<int:id>/', views.inprogress),
+    path('finished/<int:id>/', views.finished),
+    path('editticket/<int:id>/', views.editticket),
+    path('authorview/<int:id>/', views.authorview), 
+    path('authorlist/', views.authorlist),
+    path('logout/', views.logout_view)
+
 ]

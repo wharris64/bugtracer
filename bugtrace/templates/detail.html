@@ -1,0 +1,17 @@
+<ul>
+{% for i in data %}
+    
+    <li>Ticket:{{i.title}}</li>
+   <li>Author:{{i.author}} </li>
+    <li>Description:{{i.description}}</li>
+    <li>Time added:{{i.add_time}}</li>
+    <li>Ticket Status:{{i.ticket_status}}</li>
+    <li>Ticket assignee:{{i.ticket_assignee}}</li>
+    <li>Ticket Finisher:{{i.ticket_finisher}}</li>
+    <a href='/invalid/{{ i.id }}/'><button>Invalid</button></a>
+    <a href='/inprogress/{{ i.id }}/'><button>In Progress</button></a>
+    <a href='/finished/{{ i.id }}/'><button>Finished</button></a>
+    <a href='/editticket/{{ i.id }}/'><button>Edit</button></a>
+{% endfor %}
+
+</ul>

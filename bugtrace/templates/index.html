@@ -1,0 +1,25 @@
+<h1>Bug Tickets</h1>
+{% if user.is_authenticated %}
+<h5>Logged in User is {{ user.get_username }}</h5>
+{% endif %}
+<li><a href='login/'><button>Login</button></a></li>
+<li><a href='logout/'><button>Logout</button></a></li>
+<li><a href='/ticketadd/'><button>Find a bug, mark it up</button></a></li>
+<li><a href="authorlist/"><button>View Users</button></a></li>
+<h2>inprogress</h2>
+{% for i in inprog %}
+    <li><a href="/detail/{{i.id}}/">{{ i.title }}  {{ i.add_time }} </a></li>    
+{% endfor %}
+<h2>invalid</h2>
+{% for i in invalid %}
+    <li><a href="/detail/{{i.id}}/">{{ i.title }}  {{ i.add_time }} </a></li>    
+{% endfor %}
+<h2>new</h2>
+{% for i in new %}
+    <li><a href="/detail/{{i.id}}/">{{ i.title }}  {{ i.add_time }} </a></li>    
+{% endfor %}
+<h2>finished</h2>
+{% for i in finished %}
+    <li><a href="/detail/{{i.id}}/">{{ i.title }}  {{ i.add_time }} </a></li>    
+{% endfor %}
+ </ul>

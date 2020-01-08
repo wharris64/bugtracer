@@ -1,0 +1,28 @@
+{% for n in name %}
+<h1>{{n}}</h1>
+{% endfor %}
+<h1>cats</h1>
+{% if working %}
+<h3> Assigned</h3>
+<ul>
+{% for w in working%}
+<li><a href="/detail/{{w.id}}/"> {{w.title}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+<h3> Tickets Filed</h3>
+{% if filed %}
+<ul>
+{% for f in filed%}
+<li><a href="/detail/{{f.id}}/"> {{f.title}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+<h3>Tickets Completed</h3>
+{% if done %}
+<ul>
+{% for d in done%}
+<li><a href="/detail/{{d.id}}/"> {{d.title}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
