@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django import forms
 from bugtrace.forms import LoginUser
 from bugtrace.models import Ticket
-from bugtrace.forms import Add_Ticket, Edit
+from bugtrace.forms import Add_Ticket, Edit, UserAdd
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -19,6 +19,7 @@ def index(request):
     finished = Ticket.objects.filter(ticket_status='f')
     # breakpoint()
     return render(request, html, {'inprog':inprog, 'invalid':invalid, 'new':new, "finished":finished})
+
 
 @login_required
 def authorlist(request):
@@ -62,6 +63,27 @@ def ticketadd(request):
             return render(request, 'thanks.html')
     else:
         form = Add_Ticket()
+    return render(request, html, {"form": form})
+
+
+
+@login_required
+def register(request):
+    form = None
+    html = "useradd.html"
+
+    if request.method == "POST":
+        form = UserAdd(request.POST)
+        
+        if form.is_valid():
+            data= form.cleaned_data
+            User.objects.create(
+                username= data['username'],
+                password= data['password']
+            )
+        return render(request, 'thanks.html')
+    else:
+        form = UserAdd()
     return render(request, html, {"form": form})
 
 @login_required

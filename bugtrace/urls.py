@@ -33,6 +33,7 @@ urlpatterns = [
     path('editticket/<int:id>/', views.editticket),
     path('authorview/<int:id>/', views.authorview), 
     path('authorlist/', views.authorlist),
-    path('logout/', views.logout_view)
+    path('logout/', views.logout_view),
+    path('useradd/', views.register)
 
 ]

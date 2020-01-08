@@ -17,6 +17,10 @@ class Edit(ModelForm):
     class Meta:
         model = Ticket
         fields = ['title', 'description']
+
+class UserAdd(forms.Form):
+    username = forms.CharField(min_length = 5, max_length = 22)
+    password = forms.CharField(min_length =  4)
     
 
 
